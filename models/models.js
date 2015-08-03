@@ -18,6 +18,7 @@ var Sequelize = require('sequelize');
 // el dialect cambia por 'postgres' y la base de datos local (quiz.sqlite) deja
 // de funcionar. Lo que hago es comprobar si la línea DATABASE_STORAGE existe
 // en el fichero .env o no, para cargar la configuración correcta de DDBB.
+console.log(process.env.DATABASE_STORAGE);
 if(process.env.DATABASE_STORAGE != null){
   // Usar DDBB sqlite
   var dialect = 'sqlite'; var sequelize = new Sequelize (null, null, null, {dialect: dialect, storage: storage});}
