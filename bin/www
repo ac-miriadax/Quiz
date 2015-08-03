@@ -13,7 +13,8 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-console.log('OK -> http://localhost:3000');
+console.log('npm -> http://localhost:3000');
+console.log('foreman -> http://localhost:5000');
 app.set('port', port);
 
 /**

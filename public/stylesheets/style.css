@@ -31,3 +31,7 @@ header, nav, section, footer{
 nav span{
     margin: 0 10px 0 0;
 }
+
+#ErrrorMsgs{
+  color: #f00;
+}
