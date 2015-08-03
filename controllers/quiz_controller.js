@@ -87,7 +87,7 @@ exports.edit = function(req, res){
 };
 
 // Elimina una pregunta
-exports.destroy = function(req, res, next){
+exports.destroy = function(req, res){
   req.quiz.destroy().then(function(){
     res.redirect('/quizes');
   }).catch(function(error){next(error)});
