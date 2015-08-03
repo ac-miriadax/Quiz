@@ -14,19 +14,29 @@ var storage = process.env.DATABASE_STORAGE;
 // Cargar modelo ORM
 var Sequelize = require('sequelize');
 
-// Usar DDBB sqlite3
-var sequelize = new Sequelize(DB_name, user, pwd,{
-    dialect: protocol,
-    protocol: protocol,
-    port: port,
-    host: host,
-    storage: storage,
-    omitNull: true
-  }
-);
+// Esto es un hack muy churro pero me funciona. Al desplegar el proyecto en heroku
+// el dialect cambia por 'postgres' y la base de datos local (quiz.sqlite) deja
+// de funcionar. Lo que hago es comprobar si la línea DATABASE_STORAGE existe
+// en el fichero .env o no, para cargar la configuración correcta de DDBB.
+if(process.env.DATABASE_STORAGE != null){
+  // Usar DDBB sqlite
+  var dialect = 'sqlite'; var sequelize = new Sequelize (null, null, null, {dialect: dialect, storage: storage});}
+else{
+  // Usar DDBB postgres
+  var sequelize = new Sequelize(DB_name, user, pwd,{
+      dialect: protocol,
+      protocol: protocol,
+      port: port,
+      host: host,
+      storage: storage,
+      omitNull: true
+    }
+  );
+}
 
 //Importar la definición de la tabla Quiz en quiz.js
-var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+var quiz_path = path.join(__dirname, 'quiz');
+var Quiz = sequelize.import(quiz_path);
 
 exports.Quiz = Quiz;
 
