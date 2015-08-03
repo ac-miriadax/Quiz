@@ -45,3 +45,7 @@ Temporary Items
 # NodeJS
 node_modules
 npm-debug.log
+
+# Quiz
+quiz.sqlite
+.env
