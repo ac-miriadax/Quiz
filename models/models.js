@@ -15,7 +15,7 @@ var storage = process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 // Usar DDBB sqlite3
-var sequelize = new Sequelize(null, null, null,{
+var sequelize = new Sequelize(DB_name, user, pwd,{
     dialect: protocol,
     protocol: protocol,
     port: port,
@@ -38,6 +38,10 @@ sequelize.sync().then(function(){
       Quiz.create({
         pregunta: 'Capital de Italia',
         respuesta: 'Roma'
+      });
+      Quiz.create({
+        pregunta: 'Capital de Portugal',
+        respuesta: 'Lisboa'
       }).then(function(){console.log('Base de datos creada con éxito')});
     };
   });
