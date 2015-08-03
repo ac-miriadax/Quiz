@@ -1,18 +1,20 @@
-<p><label for="preg" class="rem">Pregunta:</label>
+<p><label for="preg" class="rem">Pregunta:</label><br />
 <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" /></p>
 
-<p><label for="resp" class="rem">Respuesta:</label>
+<p><label for="resp" class="rem">Respuesta:</label><br />
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" /></p>
 
 <p><label for="cat" class="rem">Categoria:</label>
 <select id="cat" name="quiz[categoria]">
-  <option value="humanidades">Humanidades</option>
-  <option value="ocio">Ocio</option>
-  <option value="ciencia">Ciencia</option>
-  <option value="tecnologia" selected>Tecnolog&iacute;a</option>
-  <option value="otro">Otro</option>
+  <option value="humanidades" <% if(quiz.categoria==='humanidades'){ %>selected<% } %>>Humanidades</option>
+  <option value="ocio" <% if(quiz.categoria==='ocio'){ %>selected<% } %>>Ocio</option>
+  <option value="ciencia" <% if(quiz.categoria==='ciencia'){ %>selected<% } %>>Ciencia</option>
+  <option value="tecnologia" <% if(quiz.categoria==='tecnologia'){ %>selected<% } %>>Tecnolog&iacute;a</option>
+  <option value="otro" <% if(quiz.categoria==='otro'){ %>selected<% } %>>Otro</option>
 </select>
 </p>
 
-<a href="/quizes"><button type="button">Cancelar</button></a>
-<input type="submit" value="Guardar">
+<article class="question">
+   <a href="/quizes"><button type="button">Cancelar</button></a>
+   <input type="submit" value="Guardar">
+</article>

@@ -48,12 +48,12 @@ sequelize.sync().then(function(){
       Quiz.create({
         pregunta: 'Capital de Italia',
         respuesta: 'Roma',
-        categoria: 'Humanidades'
+        categoria: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Portugal',
         respuesta: 'Lisboa',
-        categoria: 'Humanidades'
+        categoria: 'humanidades'
       }).then(function(){console.log('Base de datos creada con éxito')});
     };
   });

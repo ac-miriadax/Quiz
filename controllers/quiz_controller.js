@@ -18,13 +18,13 @@ exports.load = function(req, res, next, quizId){
 // Carga el listado de preguntas disponibles
 exports.index = function(req, res, next){
   models.Quiz.findAll().then(function(quizes){
-    res.render('quizes/index.ejs', {quizes: quizes, errors: []});
+    res.render('quizes/index.ejs', {quizes: quizes, title: 'Lista preguntas', errors: []});
   }).catch(function(error){next(error)});
 };
 
 // Carga el contenido de una pregunta
 exports.show = function(req, res){
-  res.render('quizes/show', {quiz: req.quiz, errors: []});
+  res.render('quizes/show', {quiz: req.quiz, title: 'Ver pregunta', errors: []});
 };
 
 // Comprueba si la respuesta es correcta o no
@@ -33,16 +33,16 @@ exports.answer = function(req, res){
   if(req.query.respuesta.toLowerCase() === req.quiz.respuesta.toLowerCase()){
       resultado = 'Correcto';
   }
-  res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado, errors: []});
+  res.render('quizes/answer', {quiz: req.quiz, title: 'Comprueba pregunta', respuesta: resultado, errors: []});
 };
 
 // Carga el formulario de pregunta nueva
 exports.new = function(req, res){
   var quiz = models.Quiz.build(
-    {pregunta: "Pregunta", respuesta: "Respuesta", categoria: "Categoria"}
+    {pregunta: "Introduce aquí el título de la pregunta", respuesta: "Introduce aquí la respuesta", categoria: "tecnologia"}
   );
 
-  res.render('quizes/new', {quiz: quiz, errors: []});
+  res.render('quizes/new', {quiz: quiz, title: 'Nueva pregunta', errors: []});
 };
 
 // Crea la pregunta nueva
@@ -51,7 +51,7 @@ exports.create = function(req, res){
   quiz.validate().then(
     function(err){
       if(err){
-        res.render('/quizes/new', {quiz: quiz, errors: err.errors});
+        res.render('/quizes/new', {quiz: quiz, title: 'Crear pregunta', errors: err.errors});
       }
 
       else{
@@ -69,7 +69,7 @@ exports.update = function(req, res){
   req.quiz.validate().then(
     function(err){
       if(err){
-        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+        res.render('quizes/edit', {quiz: req.quiz, title: 'Editar pregunta (la has cagado)', errors: err.errors});
       }
 
       else{
@@ -83,7 +83,7 @@ exports.update = function(req, res){
 exports.edit = function(req, res){
   var quiz = req.quiz;
 
-  res.render('quizes/edit', {quiz: quiz, errors: []});
+  res.render('quizes/edit', {quiz: quiz, title: 'Editar pregunta', errors: []});
 };
 
 // Elimina una pregunta
@@ -95,5 +95,5 @@ exports.destroy = function(req, res){
 
 // Este soy yo!!!
 exports.author = function(req, res){
-    res.render('author', { nombre: 'Abel Castosa' });
+    res.render('author', { nombre: 'Abel Castosa', title: 'Abel Castosa', errors: [] });
 }

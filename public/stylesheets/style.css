@@ -3,35 +3,114 @@
     padding: 0;
 }
 
+a{
+   text-decoration:none;
+   outline:none;
+   color:#ff005a;
+}
+
 body{
-    font: 16px Arial;
+    font: 300 12pt 'Roboto', Arial;
 }
 
-#page-wrap{
-    margin: 2% auto;
-    color: white;
-}
+   header{
+      display: block;
+      padding: 2em 0 1.5em;
+      text-align: center;
+      background: transparent linear-gradient(#FF1A6A, #FF005A) repeat scroll center center / cover;
+   }
 
-    #page-wrap > .main{
-        border: 1px solid #999;
-        padding: 1%;
-        margin-bottom: 1px;
-        color: black;
-    }
+      header h1{
+         font: 300 24pt 'Roboto';
+         color: #fff;
+      }
 
-section > div{
-    padding: 20px;
-}
+   nav{
+      width: 90%;
+      margin: 1.5em auto 2em;
+      max-width: 700px;
+      text-align: center;;
+   }
 
-header, nav, section, footer{
-    background: #eee;
-    text-align: center;
-}
+      nav a{
+         margin: 0 1em;
+         padding: 0 .25em;
+      }
 
-nav span{
-    margin: 0 10px 0 0;
-}
+
+   #main{
+      width: 90%;
+      margin: 0 auto;
+      max-width: 700px;
+   }
+
+      #main h1{
+         color: #ff005a;
+         font: 20pt 'Roboto';
+      }
+
+      #main p{
+         font: 300 13.5pt 'Roboto';
+         line-height: 2em;
+         margin-bottom: 1.5em;
+      }
+
+      #main ul li{
+         list-style: square;
+         font: 300 13.5pt 'Roboto';
+         line-height: 1.5em;
+         margin-bottom: 1em;
+      }
+
+      #main #preg, #main #resp{
+         border: none;
+         border-bottom: 1px solid #aaa;
+         padding: 0 .5em;
+         width: 95%;
+         max-width: 700px;
+      }
+
+   .question{
+
+   }
+
+      .question h3{
+         font: 300 13.5pt 'Roboto';
+         display: inline-block;
+      }
+
+      .question button, .question input{
+         border: none;
+         background: #ff005a;
+         color: #fff;
+         text-transform: uppercase;;
+         font-size: 7pt;
+         font-weight: bold;
+         padding: .55em 1em .5em;
+         float: right;
+         margin: 2em 0 0 .5em;
+         border-radius: 15px;
+      }
+
+      .question form{
+         display: inline-block;
+         float: right;
+      }
+
 
 #ErrrorMsgs{
   color: #f00;
 }
+
+
+   footer{
+      width: 90%;
+      margin: 5em auto 2em;
+      max-width: 700px;
+      text-align: center;
+   }
+
+      footer a{
+         color: #aaa;
+         margin: 0 1em;
+      }

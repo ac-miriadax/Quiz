@@ -1,19 +1,7 @@
-body{
-    background: #333;
+#main h1{
+   font-size: 18pt;
 }
 
-#page-wrap:after{
-    content: "Smartphone layout":
-}
-
-h2 span, section h3{
-    display: none;
-}
-
-body{
-    font-size: xx-large;
-}
-
-footer, input{
-    font-size: large;
+#main p, #main ul li{
+   font-size: 11pt;
 }

@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Preguntas</title>
-        <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
-        <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='/stylesheets/smartphone.css' />
-        <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='/stylesheets/wide.css' />
-    </head>
+   <head>
+      <title>Quiz<% if(title!=undefined){ %> &raquo; <%= title %><% } %></title>
+      <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
+      <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='/stylesheets/smartphone.css' />
+      <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='/stylesheets/wide.css' />
+      <link rel='stylesheet' type='text/css' href='//abelcastosa.com/wp-content/themes/ac2015/normalize.min.css' />
+      <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+      <meta name='viewport' content='width=device-width; initial-scale=1.0; user-scalable=no'>
+   </head>
 
-    <body>
-        <div id="page-wrap">
-            <header class="main" id="h1">
-                <h2>Quiz: el juego de las preguntas</h2>
-            </header>
+   <body>
+      <header>
+         <h1>Quiz<% if(title!=undefined){ %> &raquo; <%= title %><% } %></h1>
+      </header>
 
-            <nav class="main" id="n1" role="navigation">
-                <span><a href="/">Inicio</a></span>
-                <span><a href="/quizes">Preguntas</a></span>
-                <span><a href="/author">Autor</a></span>
-            </nav>
+      <nav class="main" id="n1" role="navigation">
+         <span><a href="/">Inicio</a></span>
+         <span><a href="/quizes">Preguntas</a></span>
+         <span><a href="/author">Autor</a></span>
+      </nav>
 
-            <section class="main" id="s1">
-              <% if(errors.length){ %>
-                <span id='ErrrorMsgs'>
-                  Corregir errorres:<br />
-                  <% for(var i in errors){ %>
-                    <span><%= errors[i].message %></span><br />
-                  <% } %>
-                </span>
-              <% } %>
-              <div><%- body %></div>
-            </section>
+      <section id="main">
+         <% if(errors.length){ %>
+            <span id='ErrrorMsgs'>
+               Corregir los siguientes errorres:<br />
+               <% for(var i in errors){ %>
+                  <span><%= errors[i].message %></span><br />
+               <% } %>
+            </span>
+         <% } %>
+         <div><%- body %></div>
+      </section>
 
-            <footer class="main" id="f1">
-                <a href="http://es.wikipedia.org/wiki/Quiz">&iquest;Qu&eacute; es un quiz?</a>
-                <a href="https://github.com/ac-miriadax/Quiz">El proyecto en GitHub</a>
-            </footer>
-        </div>
-    </body>
+      <footer class="main" id="f1">
+         <a href="http://es.wikipedia.org/wiki/Quiz">&iquest;Qu&eacute; es un quiz?</a>
+         <a href="https://github.com/ac-miriadax/Quiz">El proyecto en GitHub</a>
+      </footer>
+   </body>
 </html>
