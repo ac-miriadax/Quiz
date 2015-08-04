@@ -5,3 +5,7 @@
 #main p, #main ul li{
    font-size: 11pt;
 }
+
+.question button, .question input{
+   margin-top: 2.5em;
+}

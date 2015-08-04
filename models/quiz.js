@@ -13,6 +13,6 @@ module.exports = function(sequelize, DataTypes){
     categoria: {
       type: DataTypes.STRING,
       validate: {notEmpty: {msg: "-> Falta categoria"}}
-    },
+    }
   });
 }

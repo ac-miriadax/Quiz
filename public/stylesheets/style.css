@@ -79,6 +79,13 @@ body{
          display: inline-block;
       }
 
+         .question h3 sup{
+            font: 9pt 'Roboto';
+            margin-right: .5em;
+            text-transform: uppercase;
+            display: block;
+         }
+
       .question button, .question input{
          border: none;
          background: #ff005a;
@@ -88,7 +95,7 @@ body{
          font-weight: bold;
          padding: .55em 1em .5em;
          float: right;
-         margin: 2em 0 0 .5em;
+         margin: 3em 0 0 .5em;
          border-radius: 15px;
       }
 
