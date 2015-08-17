@@ -17,9 +17,22 @@ exports.load = function(req, res, next, quizId){
 
 // Carga el listado de preguntas disponibles
 exports.index = function(req, res, next){
-  models.Quiz.findAll().then(function(quizes){
-    res.render('quizes/index.ejs', {quizes: quizes, title: 'Lista preguntas', errors: []});
-  }).catch(function(error){next(error)});
+   // La variable 'term' es el texto que buscamos
+   var term = req.query.search;
+
+   // Si 'term' no está definido... no buscamos nada
+   if(!req.query.search){
+      term = '';
+   }
+
+   //Si 'term' está definido cambiamos espacios por '%' para obtener 'este%texto' en lugar de 'este texto'
+   else{
+      term = term.split(' ').join('%');
+   }
+
+   models.Quiz.findAll({where: ["lower(pregunta) like ?", '%' + term.toLowerCase() + '%'], order: 'pregunta ASC'}).then(function(quizes){
+      res.render('quizes/index.ejs', {quizes: quizes, title: 'Lista preguntas', errors: []});
+   }).catch(function(error){next(error)});
 };
 
 // Carga el contenido de una pregunta

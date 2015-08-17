@@ -49,6 +49,24 @@ body{
          font: 20pt 'Roboto';
       }
 
+      #main #search{
+         text-align: center;
+         margin-bottom: 2em;
+      }
+
+         #main #search-text{
+            border: none;
+            border-bottom: 1px solid #aaa;
+            width: 70%;
+            max-width: 300px;
+            padding: 0 5px;
+         }
+
+         #main #search-button{
+            margin: 0 0 0 1em !important;
+            float: none !important;
+         }
+
       #main p{
          font: 300 13.5pt 'Roboto';
          line-height: 2em;
@@ -95,7 +113,7 @@ body{
             display: block;
          }
 
-      .question button, .question input{
+      .question button, .question input, #main #search-button{
          border: none;
          background: #ff005a;
          color: #fff;
