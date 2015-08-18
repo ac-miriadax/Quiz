@@ -19,6 +19,7 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
    var login = req.body.login;
    var password  = req.body.password;
+   var timestamp = (new Date()).getTime();
 
    var userController = require('./user_controller');
    userController.autenticar(login, password, function(error, user) {
@@ -31,7 +32,8 @@ exports.create = function(req, res) {
       // La sesión se define por la existencia de:    req.session.user
       req.session.user = {
          id: user.id,
-         username: user.username
+         username: user.username,
+         lastTime: timestamp
       };
 
       // redirección a la página anterior

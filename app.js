@@ -35,6 +35,25 @@ app.use(function(req, res, next) {
    next();
 });
 
+// Si el usuario no realiza peticiones durante 120s sale automáticamente
+app.use(function(req, res, next){
+   if (req.session.user) {
+      var timer = 120000;
+      var actualTime = (new Date()).getTime();
+      var sessionTime = (new Date (req.session.user.lastAction)).getTime();
+
+      if ((actualTime - sessionTime) > timer) {
+         delete req.session.user;
+         console.log("No has hecho nada durante más de 2 minutos... SAYONARA!");
+         res.redirect('/login');
+      }
+
+      else {
+         req.session.user.lastAction = (new Date()).getTime();
+      }
+   }
+   next();
+});
 
 app.use('/', routes);
 
