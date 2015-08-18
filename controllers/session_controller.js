@@ -33,7 +33,7 @@ exports.create = function(req, res) {
       req.session.user = {
          id: user.id,
          username: user.username,
-         lastTime: timestamp
+         lastAction: timestamp
       };
 
       // redirección a la página anterior
