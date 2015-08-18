@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require ('express-partials');
 var methodOverride = require('method-override');
+var session = require('express-session');
 var routes = require('./routes/index');
 
 var app = express();
@@ -15,17 +16,28 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(partials());
-
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('Quiz by aC'));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Sesiones
+app.use(function(req, res, next) {
+   if(!req.path.match(/\/login|\/logout/)){
+      req.session.redir = req.path;
+   }
+
+   res.locals.session = req.session;
+   next();
+});
+
+
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -34,9 +46,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
 
-// development error handler
+// #################
+// MANEJO DE ERRORES
+// #################
+// Errores en desarrollo
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
@@ -49,7 +63,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
+// Errores en producción
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
