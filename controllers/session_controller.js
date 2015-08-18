@@ -1,3 +1,12 @@
+// Acceso restringido, sólo puedes continuar con sesión iniciada
+exports.loginRequired = function(req, res, next){
+   if (req.session.user) {
+      next();
+   } else {
+      res.redirect('/login');
+   }
+};
+
 // Formulario de acceso
 exports.new = function(req, res) {
    var errors = req.session.errors || {};
