@@ -34,13 +34,21 @@ else{
   );
 }
 
-//Importar la definición de la tabla Quiz en quiz.js
+// Importar la definición de la tabla Quiz
 var quiz_path = path.join(__dirname, 'quiz');
 var Quiz = sequelize.import(quiz_path);
 
-exports.Quiz = Quiz;
+// Importar definición de la tabla Comment
+var comment_path = path.join(__dirname, 'comment');
+var Comment = sequelize.import(comment_path);
 
-//Crear e inicializar tabla de preguntas
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
+
+exports.Quiz = Quiz;
+exports.Comment = Comment;
+
+// Crear e inicializar tabla de preguntas
 sequelize.sync().then(function(){
   Quiz.count().then(function(count){
     //Inicializar tabla si está vacía

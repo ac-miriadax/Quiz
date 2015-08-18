@@ -3,3 +3,12 @@
    		<input type="text" id="resp" name="respuesta" value="Responda aqu&iacute;">
     	<article class="question"><input type="submit" value="Probar suerte"></article>
     </form>
+
+    <h1>Comentarios:</h1>
+    <ul>
+    <% for(index in quiz.Comments){ %>
+      <li><%= quiz.Comments[index].texto %></li>
+    <% } %>
+    </ul>
+
+    <article class="question"><a href="/quizes/<%= quiz.id %>/comments/new"><button type="button">Enviar nuevo comentario</button></a></article>

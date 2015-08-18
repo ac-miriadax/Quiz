@@ -80,7 +80,7 @@ body{
          margin-bottom: 1em;
       }
 
-      #main #preg, #main #resp{
+      #main #preg, #main #resp, #main #comment{
          border: none;
          border-bottom: 1px solid #aaa;
          padding: 0 .5em;
