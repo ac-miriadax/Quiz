@@ -109,6 +109,8 @@ body{
       .question h3{
          font: 300 13.5pt 'Roboto';
          display: inline-block;
+         width: 80%;
+         max-width: 575px;
       }
 
          .question h3 sup{

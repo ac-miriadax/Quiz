@@ -9,3 +9,7 @@
 .question button, .question input{
    margin-top: 2.5em;
 }
+
+.question h3{
+   width: 65%;
+}
